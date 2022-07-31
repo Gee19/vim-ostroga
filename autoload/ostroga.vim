@@ -46,6 +46,7 @@ function! ostroga#popup_create()
         let left = (&columns - width) / 2
         let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal', 'border': 'rounded'}
         let s:buf = nvim_create_buf(v:false, v:true)
+        call nvim_buf_set_lines(s:buf, 0, -1, v:true, ostroga#ui#marks_to_hints(s:global_alpha_marks()))
         return nvim_open_win(s:buf, v:true, opts)
     endif
 endfunction
